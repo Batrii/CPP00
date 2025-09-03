@@ -19,11 +19,11 @@ class PhoneBook
 {
     private:
         Contact contacts[8];
-        int     index;
-        int     total_contacts;
+        int     index = 0;
+        int     total_contacts = 0;
     public:
         void    add_contact();
-        void    search_contact();
+        void    search_contact(int num);
         void    exit_phonebook();
 };
 

@@ -30,6 +30,10 @@ class Contact
 		void	set_nickname(std::string str);
 		void	set_phone_number(std::string str);
 		void	set_darkest_secret(std::string str);
+
+		std::string	get_first_name(void);
+		std::string	get_last_name(void);
+		std::string	get_nickname(void);
 };
 
 #endif
