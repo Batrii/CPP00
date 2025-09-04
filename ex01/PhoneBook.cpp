@@ -37,6 +37,11 @@ void PhoneBook::add_contact()
     std::cout << "Enter darkest secret: ";
     std::getline(std::cin, input);
     this->contacts[this->index - 1].set_darkest_secret(input);
+
+    if (this->total_contacts < 8)
+        this->total_contacts++;
+    if (this->index == 8)
+        this->index = 0;
 }
 void PhoneBook::search_contact(int num)
 {
