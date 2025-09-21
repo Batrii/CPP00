@@ -15,15 +15,18 @@
 
 int main(int argc, char **argv)
 {
-    if (argc == 2)
+    if (argc > 1)
     {
-        int i = 0;
-        std::string s = argv[1];
-        while (s[i])
+        int i = 1;
+        while (i < argc)
         {
-            char c;
-            c = std::toupper(s[i]);
-            std::cout << c;
+            std::string str = argv[i];
+            int j = 0;
+            while (j < str.length())
+            {
+                std::cout << (char)toupper(str[j]);
+                j++;
+            }
             i++;
         }
         std::cout << std::endl;
