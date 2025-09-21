@@ -43,28 +43,51 @@ void PhoneBook::add_contact()
     if (this->index == 8)
         this->index = 0;
 }
-void PhoneBook::search_contact(int num)
+void PhoneBook::search_contact()
 {
-    if (num < 0 || num >= this->index)
+    if (this->contacts[0].get_first_name().empty())
     {
-        std::cout << "Invalid index. Please try again." << std::endl;
+        std::cout << "No contacts available. Please add a contact first." << std::endl;
         return;
     }
-    std::cout << "Contact at index " << num << " | ";
-    if (this->contacts[num].get_first_name().length() > 10)
-        std::cout << "First Name: " << this->contacts[num].get_first_name().substr(0, 9) + ". | ";
-    else    
-        std::cout << "First Name: " << this->contacts[num].get_first_name() << " | ";
+    int i = 0;
+    std::cout << "Index | First Name | Last Name  | Nickname  "<< std::endl;
+    while (i < this->total_contacts)
+    {
+        std::cout << "  " << i << "   | ";
+        std::string first_name = this->contacts[i].get_first_name();
+        if (first_name.length() > 10)
+            std::cout << first_name.substr(0, 9) << ". | ";
+        else
+            std::cout << std::string(10 - first_name.length(), ' ') << first_name << " | ";
 
-    if (this->contacts[num].get_last_name().length() > 10)
-        std::cout << "Last Name: " << this->contacts[num].get_last_name().substr(0, 9) + ". | ";
-    else    
-        std::cout << "Last Name: " << this->contacts[num].get_last_name() << " | ";
-    
-    if (this->contacts[num].get_nickname().length() > 10)
-        std::cout << "Nickname: " << this->contacts[num].get_nickname().substr(0, 9) + "." << std::endl;
-    else
-        std::cout << "Nickname: " << this->contacts[num].get_nickname() << std::endl;
+        std::string last_name = this->contacts[i].get_last_name();
+        if (last_name.length() > 10)
+            std::cout << last_name.substr(0, 9) << ". | ";
+        else
+            std::cout << std::string(10 - last_name.length(), ' ') << last_name << " | ";
+
+        std::string nickname = this->contacts[i].get_nickname();
+        if (nickname.length() > 10)
+            std::cout << nickname.substr(0, 9) << "." << std::endl;
+        else
+            std::cout << std::string(10 - nickname.length(), ' ') << nickname << std::endl;
+        i++;
+    }
+    std::cout << "Enter the index of the contact to view details: ";
+    std::string input;
+    std::getline(std::cin, input);
+    int index = std::atoi(input.c_str());
+    if (index < 0 || index >= this->total_contacts)
+    {
+        std::cout << "Invalid index." << std::endl;
+        return;
+    }
+    std::cout << "First Name: " << this->contacts[index].get_first_name() << std::endl;
+    std::cout << "Last Name: " << this->contacts[index].get_last_name() << std::endl;
+    std::cout << "Nickname: " << this->contacts[index].get_nickname() << std::endl;
+    std::cout << "Phone Number: " << this->contacts[index].get_phone_number() << std::endl;
+    std::cout << "Darkest Secret: " << this->contacts[index].get_darkest_secret() << std::endl;
 }
 
 void PhoneBook::exit_phonebook()

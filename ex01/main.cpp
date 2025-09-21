@@ -27,12 +27,7 @@ int main()
             phonebook.add_contact();
         else if (input == "SEARCH")
         {
-            std::string num;
-            std::cout << "Enter contact index to search: ";
-            std::getline(std::cin, num);
-            int number;
-            number = std::stoi(num);
-            phonebook.search_contact(number);
+            phonebook.search_contact();
         }
         else if (input == "EXIT")
         {

@@ -23,7 +23,7 @@ class PhoneBook
         int     total_contacts = 0;
     public:
         void    add_contact();
-        void    search_contact(int num);
+        void    search_contact();
         void    exit_phonebook();
 };
 

@@ -47,3 +47,11 @@ std::string	Contact::get_nickname(void)
 {
     return (this->nickname);
 }
+std::string	Contact::get_phone_number(void)
+{
+    return (this->phone_number);
+}
+std::string	Contact::get_darkest_secret(void)
+{
+    return (this->darkest_secret);
+}
