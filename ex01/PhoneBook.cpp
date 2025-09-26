@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bnafiai <bnafiai@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bnafiai <<bnafiai@student.42.fr>>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/03 15:39:04 by bnafiai           #+#    #+#             */
-/*   Updated: 2025/09/03 15:39:04 by bnafiai          ###   ########.fr       */
+/*   Created: 2025/09/26 17:37:21 by bnafiai           #+#    #+#             */
+/*   Updated: 2025/09/26 17:37:21 by bnafiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,23 @@
 #include "Contact.hpp"
 #include <iostream>
 #include <string>
+#include <cstdlib>
+
+// int check_phonenumbers(std::string input)
+// {
+//     int i = 0;
+
+//     while (i < (int)input.length())
+//     {
+//         if (input[i] < '0' || input[i] > '9')
+//         {
+//             return 1;
+//         }
+//         i++;
+//     }
+//     return 0;
+// }
+
 
 void PhoneBook::add_contact()
 {
@@ -23,20 +40,70 @@ void PhoneBook::add_contact()
 
     std::string input;
     std::cout << "Enter first name: ";
-    std::getline(std::cin, input);
-    this->contacts[this->index - 1].set_first_name(input);
+    if (!std::getline(std::cin, input))
+    {
+        std::cout << "End of file or something wrong with the input" << std::endl;
+        return ;
+    }
+    if (!input.empty())
+        this->contacts[this->index - 1].set_first_name(input);
+    else
+    {
+        std::cout << "empty field" << std::endl;
+        return ;
+    }
     std::cout << "Enter last name: ";
-    std::getline(std::cin, input);
-    this->contacts[this->index - 1].set_last_name(input);
+    if (!std::getline(std::cin, input))
+    {
+        std::cout << "End of file or something wrong with the input" << std::endl;
+        return ;
+    }
+    if (!input.empty())
+        this->contacts[this->index - 1].set_last_name(input);
+    else
+    {
+        std::cout << "empty field" << std::endl;
+        return ;
+    }
     std::cout << "Enter nickname: ";
-    std::getline(std::cin, input);
-    this->contacts[this->index - 1].set_nickname(input);
+    if (!std::getline(std::cin, input))
+    {
+        std::cout << "End of file or something wrong with the input" << std::endl;
+        return ;
+    }
+    if (!input.empty())
+        this->contacts[this->index - 1].set_nickname(input);
+    else
+    {
+        std::cout << "empty field" << std::endl;
+        return ;
+    }
     std::cout << "Enter phone number: ";
-    std::getline(std::cin, input);
-    this->contacts[this->index - 1].set_phone_number(input);
+    if (!std::getline(std::cin, input))
+    {
+        std::cout << "End of file or something wrong with the input" << std::endl;
+        return ;
+    }
+    if (!input.empty())
+        this->contacts[this->index - 1].set_phone_number(input);
+    else
+    {
+        std::cout << "Wrong input for phone numbers. try again" << std::endl;
+        return ;
+    }
     std::cout << "Enter darkest secret: ";
-    std::getline(std::cin, input);
-    this->contacts[this->index - 1].set_darkest_secret(input);
+    if (!std::getline(std::cin, input))
+    {
+        std::cout << "End of file or something wrong with the input" << std::endl;
+        return ;
+    }
+    if (!input.empty())
+        this->contacts[this->index - 1].set_darkest_secret(input);
+    else
+    {
+        std::cout << "empty field" << std::endl;
+        return ;
+    }
 
     if (this->total_contacts < 8)
         this->total_contacts++;
@@ -76,7 +143,11 @@ void PhoneBook::search_contact()
     }
     std::cout << "Enter the index of the contact to view details: ";
     std::string input;
-    std::getline(std::cin, input);
+    if (!std::getline(std::cin, input))
+    {
+        std::cout << "End of file or something wrong with the input" << std::endl;
+        return ;
+    }
     int index = std::atoi(input.c_str());
     if (index < 0 || index >= this->total_contacts)
     {

@@ -19,9 +19,10 @@ class PhoneBook
 {
     private:
         Contact contacts[8];
-        int     index = 0;
-        int     total_contacts = 0;
+        int     index;
+        int     total_contacts;
     public:
+        PhoneBook() : index(0), total_contacts(0) {};
         void    add_contact();
         void    search_contact();
         void    exit_phonebook();

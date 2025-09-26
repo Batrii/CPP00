@@ -22,7 +22,7 @@ int main(int argc, char **argv)
         {
             std::string str = argv[i];
             int j = 0;
-            while (j < str.length())
+            while (j < (int)str.length())
             {
                 std::cout << (char)toupper(str[j]);
                 j++;

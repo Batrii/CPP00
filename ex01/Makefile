@@ -10,8 +10,8 @@
 #                                                                              #
 # **************************************************************************** #
 
-CC = g++ 
-FLAGS = -Wall -Wextra -Werror
+CC = c++ 
+FLAGS = -Wall -Wextra -Werror -std=c++98
 SRCS = Contact.cpp PhoneBook.cpp main.cpp
 OBJS = $(SRCS:.cpp=.o)
 

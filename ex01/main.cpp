@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bnafiai <bnafiai@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bnafiai <<bnafiai@student.42.fr>>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/03 15:52:11 by bnafiai           #+#    #+#             */
-/*   Updated: 2025/09/03 15:52:11 by bnafiai          ###   ########.fr       */
+/*   Created: 2025/09/26 15:10:24 by bnafiai           #+#    #+#             */
+/*   Updated: 2025/09/26 15:10:24 by bnafiai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,11 @@ int main()
     while (true)
     {
         std::cout << "Enter a command (ADD, SEARCH, EXIT): ";
-        std::getline(std::cin, input);
+        if (!std::getline(std::cin, input))
+        {
+            std::cout << "End of file or something wrong with the input" << std::endl;
+            return 1;
+        }
         if (input == "ADD")
             phonebook.add_contact();
         else if (input == "SEARCH")
