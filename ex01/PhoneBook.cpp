@@ -16,27 +16,9 @@
 #include <string>
 #include <cstdlib>
 
-// int check_phonenumbers(std::string input)
-// {
-//     int i = 0;
-
-//     while (i < (int)input.length())
-//     {
-//         if (input[i] < '0' || input[i] > '9')
-//         {
-//             return 1;
-//         }
-//         i++;
-//     }
-//     return 0;
-// }
-
-
 void PhoneBook::add_contact()
 {
-    if (this->index < 8)
-        this->index++;
-    std::cout << "Adding contact at index " << this->index - 1 << std::endl;
+    std::cout << "Adding contact at index " << this->index << std::endl;
 
     std::string input;
     std::cout << "Enter first name: ";
@@ -46,7 +28,7 @@ void PhoneBook::add_contact()
         return ;
     }
     if (!input.empty())
-        this->contacts[this->index - 1].set_first_name(input);
+        this->contacts[this->index].set_first_name(input);
     else
     {
         std::cout << "empty field" << std::endl;
@@ -59,7 +41,7 @@ void PhoneBook::add_contact()
         return ;
     }
     if (!input.empty())
-        this->contacts[this->index - 1].set_last_name(input);
+        this->contacts[this->index].set_last_name(input);
     else
     {
         std::cout << "empty field" << std::endl;
@@ -72,7 +54,7 @@ void PhoneBook::add_contact()
         return ;
     }
     if (!input.empty())
-        this->contacts[this->index - 1].set_nickname(input);
+        this->contacts[this->index].set_nickname(input);
     else
     {
         std::cout << "empty field" << std::endl;
@@ -85,7 +67,7 @@ void PhoneBook::add_contact()
         return ;
     }
     if (!input.empty())
-        this->contacts[this->index - 1].set_phone_number(input);
+        this->contacts[this->index].set_phone_number(input);
     else
     {
         std::cout << "Wrong input for phone numbers. try again" << std::endl;
@@ -98,13 +80,14 @@ void PhoneBook::add_contact()
         return ;
     }
     if (!input.empty())
-        this->contacts[this->index - 1].set_darkest_secret(input);
+        this->contacts[this->index].set_darkest_secret(input);
     else
     {
         std::cout << "empty field" << std::endl;
         return ;
     }
-
+    if (this->index < 8)
+        this->index++;
     if (this->total_contacts < 8)
         this->total_contacts++;
     if (this->index == 8)
