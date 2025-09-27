@@ -122,7 +122,7 @@ void PhoneBook::add_contact()
 }
 void PhoneBook::search_contact()
 {
-    if (this->contacts[0].get_first_name().empty())
+    if (this->contacts[0].get_darkest_secret().empty())
     {
         std::cout << "No contacts available. Please add a contact first." << std::endl;
         return;
@@ -153,7 +153,7 @@ void PhoneBook::search_contact()
     }
     std::cout << "Enter the index of the contact to view details: ";
     std::string input;
-    if (!std::getline(std::cin, input) || valid_input(input) == 1)
+    if (!std::getline(std::cin, input) || valid_input(input) == 1 || input.empty())
     {
         std::cout << "End of file or something wrong with the input" << std::endl;
         return ;
