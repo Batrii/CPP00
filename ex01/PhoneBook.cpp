@@ -21,6 +21,27 @@ PhoneBook::PhoneBook()
     this->index = 0;
     this->total_contacts = 0;
 }
+int check_space(std::string input)
+{
+    int c = (int)input[0];
+    if (!std::isspace(c))
+        return 1;
+    return 0;
+}
+
+int valid_input(std::string input)
+{
+    int i = 0;
+    int c;
+    while (input[i])
+    {
+        c = (unsigned char)input[i];
+        if (!std::isdigit(c))
+            return 1;
+        i++;
+    }
+    return 0;
+}
 
 void PhoneBook::add_contact()
 {
@@ -28,7 +49,7 @@ void PhoneBook::add_contact()
 
     std::string input;
     std::cout << "Enter first name: ";
-    if (!std::getline(std::cin, input))
+    if (!std::getline(std::cin, input) || !check_space(input))
     {
         std::cout << "End of file or something wrong with the input" << std::endl;
         return ;
@@ -41,7 +62,7 @@ void PhoneBook::add_contact()
         return ;
     }
     std::cout << "Enter last name: ";
-    if (!std::getline(std::cin, input))
+    if (!std::getline(std::cin, input) || !check_space(input))
     {
         std::cout << "End of file or something wrong with the input" << std::endl;
         return ;
@@ -54,7 +75,7 @@ void PhoneBook::add_contact()
         return ;
     }
     std::cout << "Enter nickname: ";
-    if (!std::getline(std::cin, input))
+    if (!std::getline(std::cin, input) || !check_space(input))
     {
         std::cout << "End of file or something wrong with the input" << std::endl;
         return ;
@@ -67,7 +88,7 @@ void PhoneBook::add_contact()
         return ;
     }
     std::cout << "Enter phone number: ";
-    if (!std::getline(std::cin, input))
+    if (!std::getline(std::cin, input) || !check_space(input))
     {
         std::cout << "End of file or something wrong with the input" << std::endl;
         return ;
@@ -80,7 +101,7 @@ void PhoneBook::add_contact()
         return ;
     }
     std::cout << "Enter darkest secret: ";
-    if (!std::getline(std::cin, input))
+    if (!std::getline(std::cin, input) || !check_space(input))
     {
         std::cout << "End of file or something wrong with the input" << std::endl;
         return ;
@@ -132,7 +153,7 @@ void PhoneBook::search_contact()
     }
     std::cout << "Enter the index of the contact to view details: ";
     std::string input;
-    if (!std::getline(std::cin, input))
+    if (!std::getline(std::cin, input) || valid_input(input) == 1)
     {
         std::cout << "End of file or something wrong with the input" << std::endl;
         return ;
