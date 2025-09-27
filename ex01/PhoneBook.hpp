@@ -22,7 +22,7 @@ class PhoneBook
         int     index;
         int     total_contacts;
     public:
-        PhoneBook() : index(0), total_contacts(0) {};
+        PhoneBook();
         void    add_contact();
         void    search_contact();
         void    exit_phonebook();

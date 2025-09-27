@@ -16,6 +16,12 @@
 #include <string>
 #include <cstdlib>
 
+PhoneBook::PhoneBook()
+{
+    this->index = 0;
+    this->total_contacts = 0;
+}
+
 void PhoneBook::add_contact()
 {
     std::cout << "Adding contact at index " << this->index << std::endl;
@@ -101,21 +107,21 @@ void PhoneBook::search_contact()
         return;
     }
     int i = 0;
-    std::cout << "Index | First Name | Last Name  | Nickname  "<< std::endl;
+    std::cout << "     Index|First Name| Last Name|  Nickname"<< std::endl;
     while (i < this->total_contacts)
     {
-        std::cout << "  " << i << "   | ";
+        std::cout << "         " << i << "|";
         std::string first_name = this->contacts[i].get_first_name();
         if (first_name.length() > 10)
-            std::cout << first_name.substr(0, 9) << ". | ";
+            std::cout << first_name.substr(0, 9) << ".|";
         else
-            std::cout << std::string(10 - first_name.length(), ' ') << first_name << " | ";
+            std::cout << std::string(10 - first_name.length(), ' ') << first_name << "|";
 
         std::string last_name = this->contacts[i].get_last_name();
         if (last_name.length() > 10)
-            std::cout << last_name.substr(0, 9) << ". | ";
+            std::cout << last_name.substr(0, 9) << ".|";
         else
-            std::cout << std::string(10 - last_name.length(), ' ') << last_name << " | ";
+            std::cout << std::string(10 - last_name.length(), ' ') << last_name << "|";
 
         std::string nickname = this->contacts[i].get_nickname();
         if (nickname.length() > 10)
